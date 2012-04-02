@@ -31,6 +31,7 @@ app.get('/', routes.index);
 app.get('/login', routes.login);
 app.get('/callback', routes.callback);
 app.get('/sonalisBadges', routes.sonalisBadges);
+//app.get('/badges', routes.getBadges);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

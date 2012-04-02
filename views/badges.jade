@@ -1,3 +1,5 @@
 div#container
   p Sonali's Badges
-  p #{badges}
+  p
+    - each badge in badges
+      img(src="#{badge}")

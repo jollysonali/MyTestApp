@@ -7,7 +7,7 @@ var Foursquare = require('node-foursquare')(config);
 var aToken;
 
 exports.index = function(req, res) {
-	res.render('index.jade', { title: 'JADDDE' });
+	res.render('index.jade', { title: 'My Foursquare Badges' });
 };
 
 exports.login = function(req, res) {
@@ -37,23 +37,21 @@ exports.sonalisBadges = function (req, res) {
       //reportError(test, error.message);
     }
     else {
-			var output ='';
+			var output = [];
+			var imgsrc ='';
 			var b;
 			var img = '';
 			for (badge in data.badges){
+			  //console.log (badge + 'is the badge');
 				b = '';
 				img = '';
 				b = data.badges[badge];
 				img += b.image.prefix + b.image.sizes[0] + b.image.name;
-				output += b.name + '<br />';
-				output += '<img src="' + img + '" /> <br />';
+				
+				//take all the badges and add the image url onto the output array
+				output.push(img);
 			}
-			//res.render('badges.jade', { title: 'Badges', badges: output });
-			res.writeHead(200, {
-				'Content-Type': 'text/html'
-			})
-			res.write(output);
-      res.end();
+			res.render('badges.jade', { title: 'Badges', badges: output });
     }
   });
 };
